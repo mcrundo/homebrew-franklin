@@ -7,21 +7,17 @@ class FranklinBook < Formula
 
   depends_on "python@3.12"
 
-  # Create the venv and symlink during install, but defer pip install to
-  # post_install so Homebrew's dylib relocation phase never touches the
-  # pre-built wheels (cryptography, lxml, etc.) whose Mach-O headers are
-  # too small for install_name_tool rewriting.
   skip_clean "libexec"
 
   def install
     venv = libexec/"venv"
     system "python3.12", "-m", "venv", venv.to_s
-    bin.install_symlink venv/"bin/franklin"
   end
 
   def post_install
     venv_pip = libexec/"venv/bin/pip"
     system venv_pip, "install", "franklin-book==#{version}"
+    bin.install_symlink libexec/"venv/bin/franklin"
   end
 
   test do
