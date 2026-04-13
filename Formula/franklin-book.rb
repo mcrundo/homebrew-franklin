@@ -1,8 +1,8 @@
 class FranklinBook < Formula
   desc "Turn technical books into Claude Code plugins (Opus advises, Sonnet executes)"
   homepage "https://github.com/mcrundo/franklin"
-  url "https://files.pythonhosted.org/packages/41/0b/fc92a83a7a3c6521cf850973207c8be6d9947255c8f0b57a0d1b5d901590/franklin_book-0.2.0.tar.gz"
-  sha256 "c58a2c5f3cfc2d082de8407effb357f429a897b138eb50c30f5cb4e2e6f1c23f"
+  url "https://files.pythonhosted.org/packages/6e/74/20444ffe88c80191058c6f4ceb17e0cd545dfb705909ad5c575915e1ee42/franklin_book-0.4.0.tar.gz"
+  sha256 "4a22f215c511c0f43439b5b2bcb0459f79ca5a654a42dde457bec0a789986431"
   license "MIT"
 
   depends_on "python@3.12"
