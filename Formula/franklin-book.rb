@@ -7,12 +7,12 @@ class FranklinBook < Formula
 
   depends_on "python@3.12"
 
+  # The venv contains pre-built wheels (cryptography, lxml, etc.) whose
+  # Mach-O headers are too small for Homebrew's dylib ID rewriting.
+  # Skipping clean on libexec prevents the "Failed changing dylib ID" error.
+  skip_clean "libexec"
+
   def install
-    # Use pip with pre-built wheels instead of virtualenv_install_with_resources
-    # (which forces --no-binary :all: and hits brew's sandboxed build
-    # environment limitations for packages with native extensions like
-    # cryptography, pillow, and lxml). This matches what `uv tool install`
-    # and `pipx install` do — binary wheels from PyPI.
     python3 = "python3.12"
     venv = libexec/"venv"
     system python3, "-m", "venv", venv.to_s
