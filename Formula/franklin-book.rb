@@ -20,9 +20,7 @@ class FranklinBook < Formula
   end
 
   def post_install
-    venv = libexec/"venv"
-    venv_pip = venv/"bin/pip"
-    system venv_pip, "install", "--upgrade", "pip"
+    venv_pip = libexec/"venv/bin/pip"
     system venv_pip, "install", "franklin-book==#{version}"
   end
 
